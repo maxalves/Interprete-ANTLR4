@@ -23,7 +23,7 @@ public class Main {
 		FacilParser parser = new FacilParser(tokens);
 
 		// Executa Analisador Sintatico para gerar uma arvode de sintaxe
-		FacilParser.StartContext tree = parser.start();
+		FacilParser.ProgramaContext tree = parser.programa();
 
 		// Cria um visitante para visitar cada nodulo e realizar a analise semantica
 		FacilCustomVisitor visitor = new FacilCustomVisitor();

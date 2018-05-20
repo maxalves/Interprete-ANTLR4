@@ -1,5 +1,9 @@
 facil meuexemplo { 
-	variavel x = 5+5-2*2; 
+	variavel x;
 	
-	botanatela x;
+	x = 2000;
+	y = x;
+	
+	botanatela 10;
+	botanatela x; 
 } 

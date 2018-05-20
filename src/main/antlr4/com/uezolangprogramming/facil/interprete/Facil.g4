@@ -1,15 +1,36 @@
 //CABEÇALHO
 grammar Facil;
-
+@parser::header {
+	import java.util.Map;
+	import java.util.HashMap;
+}
+@parser::members {
+	Map<String, Object> tabelaSimbolos = new HashMap<String,Object>(); 
+}
 
 //GRAMATICA LIVRE DE CONTEXTO
-start
-:
-	'hello' 'world'
-;
+programa: 
+		PROGRAMA IDENTIFICADOR ABRE_CHAVES
+		sentenca*
+		FECHA_CHAVES;
 
+sentenca: variavel_decl | variavel_assignacao | botanatela;
+
+variavel_decl: VARIAVEL IDENTIFICADOR PONTO_VIRGULA
+				{tabelaSimbolos.put($IDENTIFICADOR.text, null);};
+variavel_assignacao: IDENTIFICADOR ASSIGNACAO expressao PONTO_VIRGULA
+				{tabelaSimbolos.put($IDENTIFICADOR.text, $expressao.valor);};
+botanatela: BOTANATELA expressao PONTO_VIRGULA
+				{System.out.println($expressao.valor);};
+
+expressao returns [Object valor]: 
+				CONSTANTE {$valor = Integer.parseInt($CONSTANTE.text);}
+				| 
+				IDENTIFICADOR {$valor = tabelaSimbolos.get($IDENTIFICADOR.text);} ;
+
+//GRAMATICA REGULAR
 //PALAVRAS RESERVADAS
-PROGRAMA: 'Facil';
+PROGRAMA: 'facil';
 VARIAVEL: 'variavel';
 BOTANATELA: 'botanatela';
 
