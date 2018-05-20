@@ -1,11 +1,37 @@
+//CABEÇALHO
 grammar Facil;
 
+
+//GRAMATICA LIVRE DE CONTEXTO
 start
 :
 	'hello' 'world'
 ;
 
-WS
-:
-	[ \t\r\n]+ -> skip
-;
+//PALAVRAS RESERVADAS
+PROGRAMA: 'Facil';
+VARIAVEL: 'variavel';
+BOTANATELA: 'botanatela';
+
+//ARITMETICOS
+SOMA: '+';
+SUBTRACAO: '-';
+MULTIPLICACAO: '*';
+DIVISAO: '/';
+
+//ASSIGNACAO 
+ASSIGNACAO: '=';
+
+//PARENTESES E PONTUACAO
+ABRE_CHAVES: '{';
+FECHA_CHAVES: '}';
+ABRE_PARENTESES: '(';
+FECHA_PARENTESES: ')';
+PONTO_VIRGULA: ';';
+
+//IDENTIFICADORES (Nome do programa ou nome de variaveis)
+IDENTIFICADOR: [a-zA-Z_][a-zA-Z0-9_]*;
+CONSTANTE: [0-9]+;
+
+//PULAR QUEBRAS DE LINHA, ESPAÇOS E TABULACOES 
+WS: [ \t\r\n]+ -> skip;
