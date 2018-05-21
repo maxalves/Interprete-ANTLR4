@@ -5,9 +5,9 @@ import java.util.Map;
 public class VariavelDecl implements ASTNode {
 	private String nome;
 
-	public VariavelDecl(String name) {
+	public VariavelDecl(String nome) {
 		super();
-		this.nome = name;
+		this.nome = nome;
 	}
 
 	@Override

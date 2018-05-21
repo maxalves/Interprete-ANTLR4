@@ -6,9 +6,9 @@ public class VariavelAssignacao implements ASTNode {
 	private String nome;
 	private ASTNode expressao;
 
-	public VariavelAssignacao(String name, ASTNode expressao) {
+	public VariavelAssignacao(String nome, ASTNode expressao) {
 		super();
-		this.nome = name;
+		this.nome = nome;
 		this.expressao = expressao;
 	}
 

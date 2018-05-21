@@ -3,16 +3,16 @@ package com.uezolangprogramming.facil.interprete.ast;
 import java.util.Map;
 
 public class Constante implements ASTNode {
-	private Object value;
+	private Object valor;
 
 	@Override
 	public Object execute(Map<String, Object> tabelaSimbolos) {
-		return value;
+		return valor;
 	}
 
 	public Constante(Object value) {
 		super();
-		this.value = value;
+		this.valor = value;
 	}
 
 }

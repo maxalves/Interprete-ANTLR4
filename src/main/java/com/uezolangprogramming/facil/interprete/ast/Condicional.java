@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Condicional implements ASTNode {
-	private ASTNode condition;
+	private ASTNode condicao;
 
-	public Condicional(ASTNode condition, List<ASTNode> conteudo1, List<ASTNode> conteudo2) {
+	public Condicional(ASTNode condicao, List<ASTNode> conteudo1, List<ASTNode> conteudo2) {
 		super();
-		this.condition = condition;
+		this.condicao = condicao;
 		this.conteudo1 = conteudo1;
 		this.conteudo2 = conteudo2;
 	}
@@ -18,7 +18,7 @@ public class Condicional implements ASTNode {
 
 	@Override
 	public Object execute(Map<String, Object> tabelaSimbolos) {
-		if ((boolean)condition.execute(tabelaSimbolos)) {
+		if ((boolean)condicao.execute(tabelaSimbolos)) {
 			for (ASTNode n : conteudo1) {
 				n.execute(tabelaSimbolos);
 			}
