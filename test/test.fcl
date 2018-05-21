@@ -1,9 +1,10 @@
 facil meuexemplo { 
-	variavel x;
+	var = x; 
+	x = 5/3;
 	
-	x = 2000;
-	y = x;
-	
-	botanatela 10;
-	botanatela x; 
+	se(false) { 
+		botanatela 2+2*2;
+	} senao {
+		botanatela x;
+	}
 } 
