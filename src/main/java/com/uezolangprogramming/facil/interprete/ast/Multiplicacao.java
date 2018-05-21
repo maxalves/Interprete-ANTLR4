@@ -15,7 +15,7 @@ public class Multiplicacao implements ASTNode {
 
 	@Override
 	public Object execute(Map<String, Object> tabelaSimbolos) {
-		return (int) operador1.execute(tabelaSimbolos) / (int) operador2.execute(tabelaSimbolos);
+		return (int) operador1.execute(tabelaSimbolos) * (int) operador2.execute(tabelaSimbolos);
 	}
 
 }

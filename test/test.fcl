@@ -1,6 +1,6 @@
 facil meuexemplo { 
 	var = x; 
-	x = 5/3;
+	x = 6/3+2*2-4/2+2+2+2;
 	
 	se(false) { 
 		botanatela 2+2*2;

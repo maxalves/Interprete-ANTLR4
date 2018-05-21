@@ -1,4 +1,3 @@
-//CABEÇALHO
 grammar Facil;
 @parser::header {
 	import java.util.Map;
@@ -11,7 +10,6 @@ grammar Facil;
 	Map<String, Object> tabelaSimbolos = new HashMap<String,Object>(); 
 }
 
-//GRAMATICA LIVRE DE CONTEXTO
 programa:  PROGRAMA IDENTIFICADOR ABRE_CHAVES
 		{
 		List<ASTNode> conteudo = new ArrayList<ASTNode>();
@@ -72,8 +70,6 @@ variavel_decl returns [ASTNode node]:
 variavel_assignacao returns [ASTNode node]: 
 			IDENTIFICADOR ASSIGNACAO expressao PONTO_VIRGULA {$node = new VariavelAssignacao($IDENTIFICADOR.text, $expressao.node);};
 
-//GRAMATICA REGULAR
-//PALAVRAS RESERVADAS
 PROGRAMA: 'facil';
 VARIAVEL: 'variavel';
 BOTANATELA: 'botanatela';
@@ -82,25 +78,20 @@ SE: 'se';
 SENAO: 'senao';
 BOOLEANO: 'true' | 'false';
 
-//ARITMETICOS
 SOMA: '+';
 SUBTRACAO: '-';
 MULTIPLICACAO: '*';
 DIVISAO: '/';
 
-//ASSIGNACAO 
 ASSIGNACAO: '=';
 
-//PARENTESES E PONTUACAO
 ABRE_CHAVES: '{';
 FECHA_CHAVES: '}';
 ABRE_PARENTESES: '(';
 FECHA_PARENTESES: ')';
 PONTO_VIRGULA: ';';
 
-//IDENTIFICADORES (Nome do programa ou nome de variaveis)
 IDENTIFICADOR: [a-zA-Z_][a-zA-Z0-9_]*;
 CONSTANTE: [0-9]+;
 
-//PULAR QUEBRAS DE LINHA, ESPAÇOS E TABULACOES 
 WS: [ \t\r\n]+ -> skip;
