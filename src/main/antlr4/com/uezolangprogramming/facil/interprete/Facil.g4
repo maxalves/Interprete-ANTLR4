@@ -56,10 +56,14 @@ expressao returns [ASTNode node]:
 fator returns [ASTNode node]: 
 			t1=termo {$node = $t1.node;}
 			((MULTIPLICACAO  t2=termo {$node = new Multiplicacao($node, $t2.node);}) |
-			(DIVISAO t3=fator {$node = new Divisao($node, $t3.node);}))*;
+			(DIVISAO t3=fator {$node = new Divisao($node, $t3.node);}))*
+			| ((t4=termo {$node = $t4.node;} MAIOR t5=termo {$node = new Maior($node, $t5.node);})
+			| (t4=termo {$node = $t4.node;} MENOR t5=termo {$node = new Menor($node, $t5.node);})
+			| (t4=termo {$node = $t4.node;} IGUAL t5=termo {$node = new Maior($node, $t5.node);}))*;
 
 termo returns [ASTNode node]: 
 			CONSTANTE {$node = new Constante(Integer.parseInt($CONSTANTE.text));}
+			| RET IDENTIFICADOR {$node = new Expressao($IDENTIFICADOR.text);} RET
 			| BOOLEANO {$node = new Constante(Boolean.parseBoolean($BOOLEANO.text));}
 			| ABRE_PARENTESES expressao {$node = $expressao.node;} FECHA_PARENTESES
 			| IDENTIFICADOR {$node = new VariavelRef($IDENTIFICADOR.text);};				
@@ -83,6 +87,10 @@ SUBTRACAO: '-';
 MULTIPLICACAO: '*';
 DIVISAO: '/';
 
+MAIOR: '>';
+MENOR: '<';
+IGUAL: '==';
+
 ASSIGNACAO: '=';
 
 ABRE_CHAVES: '{';
@@ -90,6 +98,7 @@ FECHA_CHAVES: '}';
 ABRE_PARENTESES: '(';
 FECHA_PARENTESES: ')';
 PONTO_VIRGULA: ';';
+RET: '"';
 
 IDENTIFICADOR: [a-zA-Z_][a-zA-Z0-9_]*;
 CONSTANTE: [0-9]+;

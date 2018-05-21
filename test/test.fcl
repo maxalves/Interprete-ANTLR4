@@ -1,10 +1,10 @@
 facil meuexemplo { 
 	var = x; 
-	x = 6/3+2*2-4/2+2+2+2;
+	x = 4;
 	
-	se(false) { 
-		botanatela 2+2*2;
+	se(x>46) { 
+		botanatela 10;
 	} senao {
-		botanatela x;
+		botanatela "testando";
 	}
 } 
