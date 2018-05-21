@@ -1,5 +1,5 @@
 facil meuexemplo { 
-	var = x; 
+	variavel x; 
 	x = 4;
 	
 	se(x>46) { 
