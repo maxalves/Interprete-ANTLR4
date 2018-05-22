@@ -1,10 +1,12 @@
 facil meuexemplo { 
 	variavel x; 
 	x = 4;
-	
+	y = x;
 	se(x>46) { 
-		botanatela 10;
+		botanatela 2+2*4+5/3;
 	} senao {
 		botanatela "testando";
 	}
+	
+	botanatela y;
 } 
